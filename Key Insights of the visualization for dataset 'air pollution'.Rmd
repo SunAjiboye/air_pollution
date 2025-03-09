@@ -1,0 +1,120 @@
+---
+title: "Analysis & Insights (Air Quality Dataset)"
+author: "Sun Ajiboye"
+date: "2025-03-09"
+output: word_document
+---
+
+Customizing the Scatter Plot (Ozone vs. Solar Radiation):
+
+Here's how you can tweak the scatter plot:
+
+1. Change Point Style:
+   - Use `pch` to change the shape of the points.
+   ```R
+   plot(airquality$Solar.R, airquality$Ozone, 
+        xlab = "Solar Radiation", ylab = "Ozone Levels", 
+        main = "Ozone vs. Solar Radiation", 
+        pch = 16, col = "blue") # Use filled circles
+   ```
+
+2. Modify Colors:
+   - Use `col` to customize point and line colors.
+   ```R
+   plot(airquality$Solar.R, airquality$Ozone, 
+        col = "forestgreen") # Change point color
+   abline(lm(Ozone ~ Solar.R, data = airquality), col = "darkorange") # Change trendline color
+   ```
+
+3. Add Gridlines
+ ```R
+   grid(col = "lightgray", lty = "dotted") # Add a gray dotted grid
+   ```
+
+4. Change Axis Scale:
+   - Use `xlim` and `ylim` to adjust axis limits.
+   ```R
+   plot(airquality$Solar.R, airquality$Ozone, 
+        xlim = c(0, 350), ylim = c(0, 150)) # Set specific axis ranges
+   ```
+
+---
+
+# Customizing the Box Plot (Ozone Levels by Month):
+
+Here are customization ideas for the box plot:
+
+1. Modify Colors:
+   - Change the color palette for the boxes.
+   ```R
+   boxplot(Ozone ~ Month, data = airquality, 
+           col = c("lightblue", "lightgreen", "lightpink", "lightyellow", "lightgray"))
+   ```
+
+2. Label the Axes:
+   - Add descriptive labels to the axes for better clarity.
+   ```R
+   boxplot(Ozone ~ Month, data = airquality, 
+           xlab = "Month (May to September)", ylab = "Ozone Levels (ppb)")
+   ```
+
+3. Add Notches:
+   - Add notches to compare medians across groups.
+   ```R
+   boxplot(Ozone ~ Month, data = airquality, 
+           notch = TRUE, main = "Notched Boxplot: Ozone Levels by Month")
+   ```
+
+4. Rotate X-axis Labels:
+   - Adjust axis labels for better readability.
+   ```R
+   boxplot(Ozone ~ Month, data = airquality)
+   axis(1, at = 1:5, labels = c("May", "Jun", "Jul", "Aug", "Sep"), las = 2) # Rotate labels
+   ```
+
+---
+
+Here are some possible insights you could derive from the visualizations of the `airquality` dataset:
+
+---
+
+1. Scatter Plot (Ozone vs. Solar Radiation):
+- Positive Relationship: The scatter plot may reveal that higher Solar Radiation (`Solar.R`) often corresponds to higher Ozone (`Ozone`) levels, suggesting a positive correlation.
+- Outliers: Points far from the trendline could indicate days with unusual Ozone or Solar Radiation levels, possibly influenced by unique weather events or measurement errors.
+- Clustering: If data points form clusters, it may indicate specific conditions or periods when certain Ozone levels are more frequent.
+
+---
+
+ 2. Box Plot (Ozone Levels by Month):
+- Monthly Variations: The box plot could show clear differences in median Ozone levels across months, with values potentially peaking in the summer months (June, July, August).
+- Outliers: The plot highlights outliers, which could represent exceptionally high or low Ozone levels on specific days.
+- Spread of Data: Wider boxes or whiskers indicate greater variability in Ozone levels for specific months.
+
+---
+
+By examining these visualizations, one can identify seasonal trends, periods of high or low air pollution, and factors that might influence Ozone levels, like Solar Radiation or other environmental variables. 
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
