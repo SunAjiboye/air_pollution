@@ -39,4 +39,36 @@ boxplot(Ozone ~ Month, data = airquality,
         col = rainbow(5))
 
 
+# Select numeric columns from the dataset)
+numeric_data <- new_airquality[, c("Ozone", "Solar.R", "Wind", "Temp")]
+print(numeric_data)
+
+# Find correllation matrix
+correlation_matrix <- cor(numeric_data, use = "complete.obs")
+
+# Calculate the frequency of each category
+# Calculate the frequency of each category
+# Calculate the frequency of each category
+pollution_counts <- table(new_airquality$"ozone")
+print(pollution_counts)                          
+                          
+
+# Compute the correlation matrix
+correlation_matrix <- cor(new_airquality[, c("Ozone", "Solar.R", "Wind", "Temp")], use = "complete.obs")
+
+# Extract the upper triangular matrix (excluding the diagonal)
+cor_values <- correlation_matrix[upper.tri(correlation_matrix)]
+
+# Create a pie chart of the absolute correlation values
+pie(abs(cor_values), 
+    labels = paste0("Corr: ", round(abs(cor_values), 2)), 
+    col = rainbow(length(cor_values)), 
+    main = "Pie Chart of Correlation Strengths")
+
+
+
+
+
+
+
 
